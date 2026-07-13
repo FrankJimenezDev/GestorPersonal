@@ -1,24 +1,31 @@
-
+import { ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
 
 export const databaseProviders = [
   {
     provide: 'DATA_SOURCE',
-    useFactory: async () => {
+    inject: [ConfigService],
+    useFactory: async (configService: ConfigService) => {
       const dataSource = new DataSource({
-        type: 'mysql',
-        host: 'localhost',
-        port: 3306,
-        username: 'root',
-        password: 'root',
-        database: 'test',
-        entities: [
-            __dirname + '/../**/*.entity{.ts,.js}',
-        ],
+        type: 'postgres',
+        host: configService.getOrThrow<string>('DB_HOST'),
+        port: configService.getOrThrow<number>('DB_PORT'),
+        username: configService.getOrThrow<string>('POSTGRES_USER'),
+        password: configService.getOrThrow<string>('POSTGRES_PASSWORD'),
+        database: configService.getOrThrow<string>('POSTGRES_DB'),
+        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: true,
+        logging: ['query', 'schema', 'error'],
       });
 
-      return dataSource.initialize();
+      await dataSource.initialize();
+
+      console.log(
+        'Entidades:',
+        dataSource.entityMetadatas.map(e => e.name),
+      );
+
+      return dataSource;
     },
   },
 ];
