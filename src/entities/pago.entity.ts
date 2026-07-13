@@ -1,5 +1,6 @@
 import { IsNumber } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Deuda } from "./deuda.entity";
 
 @Entity('pago')
 export class Pago {
@@ -16,4 +17,7 @@ export class Pago {
 
     @Column()
     date: Date;
+
+    @ManyToOne(() => Deuda, deuda => deuda.pagos)
+    deuda: Deuda;
 }

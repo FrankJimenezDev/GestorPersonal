@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Usuario } from "./usuario.entity";
+import { Pago } from "./pago.entity";
 
 @Entity('deuda')
 export class Deuda {
@@ -23,4 +25,11 @@ export class Deuda {
 
     @Column()
     date: Date;
+
+    @OneToMany(() => Pago, pago => pago.deuda)
+    pagos: Pago[];
+
+    @ManyToOne(() => Usuario, usuario => usuario.debts)
+    usuario: Usuario;
+
 }

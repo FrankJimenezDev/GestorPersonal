@@ -22,6 +22,6 @@ export class Gasto {
     @ManyToOne(() => Categoria, categoria => categoria.gastos)
     categoria: Categoria;
 
-    @ManyToOne(() => Usuario, usuario => usuario.expenses)
+    @ManyToOne(() => Usuario, usuario => usuario.id)
     usuario : Usuario
 }

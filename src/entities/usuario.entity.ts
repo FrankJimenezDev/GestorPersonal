@@ -45,15 +45,15 @@ export class Usuario {
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @OneToMany(() => Categoria, categoria => categoria.id)
-    category: Categoria[];
+    @OneToMany(() => Categoria, categoria => categoria.usuario)
+    categoris: Categoria[];
 
-    @OneToMany(() => Deuda, deuda => deuda.id)
+    @OneToMany(() => Deuda, deuda => deuda.usuario)
     debts: Deuda[];
 
-    @OneToMany(() => Gasto, gasto => gasto.id)
+    @OneToMany(() => Gasto, gasto => gasto.usuario)
     expenses: Gasto[];
 
-    @OneToMany(() => Ingreso, ingreso => ingreso.id)
+    @OneToMany(() => Ingreso, ingreso => ingreso.usuario)
     income: Ingreso[];
 }

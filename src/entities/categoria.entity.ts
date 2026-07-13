@@ -21,7 +21,7 @@ export class Categoria {
     @OneToMany(() => Ingreso, ingreso => ingreso.categoria)
     ingresos: Ingreso[];
 
-    @ManyToOne(() => Usuario, usuario => usuario.id)
+    @ManyToOne(() => Usuario, usuario => usuario.categoris)
     usuario: Usuario;
 
 }
