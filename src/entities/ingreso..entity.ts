@@ -10,7 +10,6 @@ export class Ingreso {
     id: number;
 
     @Column()
-    @IsNumber()
     amount: number;
 
     @Column()

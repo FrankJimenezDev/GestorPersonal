@@ -10,7 +10,6 @@ export class Gasto {
     id: number;
 
     @Column()
-    @IsNumber()
     amount: number;
 
     @Column()

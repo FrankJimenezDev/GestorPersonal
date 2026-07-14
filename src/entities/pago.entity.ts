@@ -9,7 +9,6 @@ export class Pago {
     id: number;
 
     @Column()
-    @IsNumber()
     amount: number;
 
     @Column()

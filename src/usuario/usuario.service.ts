@@ -6,6 +6,8 @@ import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 export class UsuarioService {
 
   create(createUsuarioDto: CreateUsuarioDto) {
+    console.log("createUsuarioDto: ", createUsuarioDto);
+    
     return 'This action adds a new usuario';
   }
 

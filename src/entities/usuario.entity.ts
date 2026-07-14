@@ -1,4 +1,3 @@
-import { IsEmail, isEmail, IsNumber, IsString, MinLength } from "class-validator";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Categoria } from "./categoria.entity";
 import { Deuda } from "./deuda.entity";
@@ -12,28 +11,21 @@ export class Usuario {
     id: string;
 
     @Column()
-    @IsString()
     name: string;
 
     @Column()
-    @IsString()
     lastName: string;
 
     @Column()
-    @IsEmail()
     email: string;
 
     @Column()
-    @IsString()
-    @MinLength(8)
     password: string;
 
     @Column()
-    @IsNumber() 
     age : number;
 
     @Column()
-    @IsString()
     country : string;
 
     @Column()
