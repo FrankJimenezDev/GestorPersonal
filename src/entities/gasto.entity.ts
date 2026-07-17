@@ -7,20 +7,20 @@ import { Categoria } from "./categoria.entity";
 export class Gasto {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
     @Column()
-    amount: number;
+    amount!: number;
 
     @Column()
-    description: string;
+    description!: string;
 
     @Column()
-    date: Date;
+    date!: Date;
 
     @ManyToOne(() => Categoria, categoria => categoria.gastos)
-    categoria: Categoria;
+    categoria!: Categoria;
 
     @ManyToOne(() => Usuario, usuario => usuario.id)
-    usuario : Usuario
+    usuario!: Usuario
 }

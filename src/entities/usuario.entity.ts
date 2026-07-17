@@ -8,44 +8,47 @@ import { Ingreso } from "./ingreso..entity";
 export class Usuario {
 
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id!: string;
 
     @Column()
-    name: string;
+    name!: string;
 
     @Column()
-    lastName: string;
+    lastName!: string;
 
     @Column()
-    email: string;
+    email!: string;
 
     @Column()
-    password: string;
+    password!: string;
 
     @Column()
-    age : number;
+    age!: number;
 
     @Column()
-    country : string;
+    country!: string;
 
     @Column()
-    verified: boolean;
+    verified!: boolean;
+
+    @Column()
+    isActive!: boolean;
 
     @CreateDateColumn()
-    createdAt: Date;
+    createdAt!: Date;
 
     @UpdateDateColumn()
-    updatedAt: Date;
+    updatedAt!: Date;
 
     @OneToMany(() => Categoria, categoria => categoria.usuario)
-    categoris: Categoria[];
+    categories!: Categoria[];
 
     @OneToMany(() => Deuda, deuda => deuda.usuario)
-    debts: Deuda[];
+    debts!: Deuda[];
 
     @OneToMany(() => Gasto, gasto => gasto.usuario)
-    expenses: Gasto[];
+    expenses!: Gasto[];
 
     @OneToMany(() => Ingreso, ingreso => ingreso.usuario)
-    income: Ingreso[];
+    income!: Ingreso[];
 }

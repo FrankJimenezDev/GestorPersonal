@@ -7,21 +7,21 @@ import { Gasto } from "./gasto.entity";
 export class Categoria {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
     @Column()
-    name: string;
+    name!: string;
 
     @Column()
-    type: string
+    type!: string;
 
     @OneToMany(() => Gasto, gasto => gasto.categoria)
-    gastos: Gasto[];
+    gastos!: Gasto[];
 
     @OneToMany(() => Ingreso, ingreso => ingreso.categoria)
-    ingresos: Ingreso[];
+    ingresos!: Ingreso[];
 
-    @ManyToOne(() => Usuario, usuario => usuario.categoris)
-    usuario: Usuario;
+    @ManyToOne(() => Usuario, usuario => usuario.categories)
+    usuario!: Usuario;
 
 }

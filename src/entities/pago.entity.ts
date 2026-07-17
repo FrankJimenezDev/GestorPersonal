@@ -6,17 +6,17 @@ import { Deuda } from "./deuda.entity";
 export class Pago {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
     @Column()
-    amount: number;
+    amount!: number;
 
     @Column()
-    description: string;
+    description!: string;
 
     @Column()
-    date: Date;
+    date!: Date;
 
     @ManyToOne(() => Deuda, deuda => deuda.pagos)
-    deuda: Deuda;
+    deuda!: Deuda;
 }

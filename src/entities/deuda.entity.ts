@@ -6,30 +6,30 @@ import { Pago } from "./pago.entity";
 export class Deuda {
 
     @PrimaryGeneratedColumn()
-    id : number;
+    id!: number;
 
     @Column()
-    creditor: string;
+    creditor!: string;
 
     @Column()
-    totalAmount: number;
+    totalAmount!: number;
 
     @Column()
-    outStandingBalance: number;
+    outStandingBalance! : number;
 
     @Column()
-    description: string;
+    description!: string;
 
     @Column()
-    status: string;
+    status!: string;
 
     @Column()
-    date: Date;
+    date!: Date;
 
     @OneToMany(() => Pago, pago => pago.deuda)
-    pagos: Pago[];
+    pagos!: Pago[];
 
     @ManyToOne(() => Usuario, usuario => usuario.debts)
-    usuario: Usuario;
+    usuario!: Usuario;
 
 }

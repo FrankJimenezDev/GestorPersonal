@@ -1,14 +1,33 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
+import { Usuario } from 'src/entities/usuario.entity';
+import { Repository } from 'typeorm';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsuarioService {
 
-  create(createUsuarioDto: CreateUsuarioDto) {
-    console.log("createUsuarioDto: ", createUsuarioDto);
+  constructor(
+    @InjectRepository(Usuario)
+    private readonly usuarioRepository: Repository<Usuario>,
+  ) {}
+
+  async create(createUsuarioDto: CreateUsuarioDto) {
+
+    const hashedPassword = await bcrypt.hash(createUsuarioDto.password, 10);
     
-    return 'This action adds a new usuario';
+    const usuario = this.usuarioRepository.create({
+      ...createUsuarioDto,
+      password: hashedPassword,
+      verified: false,
+      isActive: true,
+    });
+
+    await this.usuarioRepository.save(usuario);
+
+    return `Bienvenido ${usuario.name} ${usuario.lastName}, tu cuenta ha sido creada exitosamente.`;
   }
 
   findAll() {
@@ -27,3 +46,4 @@ export class UsuarioService {
     return `This action removes a #${id} usuario`;
   }
 }
+
