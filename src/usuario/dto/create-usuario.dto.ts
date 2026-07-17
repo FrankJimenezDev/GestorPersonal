@@ -3,21 +3,21 @@ import { IsEmail, IsNumber, IsString, MinLength } from 'class-validator';
 export class CreateUsuarioDto {
 
   @IsString()
-  name: string;
+  name!: string;
 
   @IsString()
-  lastName: string;
+  lastName!: string;
 
   @IsEmail()
-  email: string;
+  email!: string;
 
   @IsString()
   @MinLength(8)
-  password: string;
+  password!: string;
 
   @IsNumber()
-  age: number;
+  age!: number;
 
   @IsString()
-  country: string;
+  country!: string;
 }

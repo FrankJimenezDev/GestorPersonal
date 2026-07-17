@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Usuario } from "./usuario.entity";
 import { Ingreso } from "./ingreso..entity";
 import { Gasto } from "./gasto.entity";
@@ -22,6 +22,7 @@ export class Categoria {
     ingresos!: Ingreso[];
 
     @ManyToOne(() => Usuario, usuario => usuario.categories)
+    @JoinColumn({ name: 'usuarioId' })
     usuario!: Usuario;
 
 }
