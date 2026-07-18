@@ -51,6 +51,7 @@ export class CategoriaService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} categoria`;
+    this.categoriaRepository.delete(id);
+    return `Categoria eliminada correctamente`;
   }
 }

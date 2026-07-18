@@ -24,6 +24,8 @@ export class CategoriaController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCategoriaDto: UpdateCategoriaDto) {
+
+    console.log(updateCategoriaDto);
     return this.categoriaService.update(+id, updateCategoriaDto);
   }
 
