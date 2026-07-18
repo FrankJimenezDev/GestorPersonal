@@ -34,8 +34,20 @@ export class CategoriaService {
     return `This action returns a #${id} categoria`;
   }
 
-  update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
-    return `This action updates a #${id} categoria`;
+  async update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
+
+    const category = await this.categoriaRepository.findOne({
+      where: { id },
+    });
+
+    if (!category) {
+      throw new Error(`Categoria with id ${id} not found`);
+    }
+
+    this.categoriaRepository.merge(category, updateCategoriaDto);
+    await this.categoriaRepository.save(category);
+
+    return `Categoria ${category.name} actualizada correctamente`;
   }
 
   remove(id: number) {
