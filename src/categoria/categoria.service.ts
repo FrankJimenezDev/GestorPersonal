@@ -16,7 +16,8 @@ export class CategoriaService {
   async create(createCategoriaDto: CreateCategoriaDto) {
 
     const categoria = this.categoriaRepository.create({
-      ...createCategoriaDto,
+      name: createCategoriaDto.name,
+      type: createCategoriaDto.type,
       usuario: {
         id: createCategoriaDto.usuarioId
       }
