@@ -8,7 +8,7 @@ export class CreateGastoDto {
     @IsString()
     description: string;
 
-    @IsString()
+    @IsNumber()
     categoria: number;
 
     @IsDate()
